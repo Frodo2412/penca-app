@@ -1,10 +1,6 @@
-import {StyleSheet, TextInput} from "react-native";
+import {StyleSheet, TextInput, TextInputProps} from "react-native";
 
-interface TextFieldProps {
-    placeholder: string;
-}
-
-export default function TextField(props: TextFieldProps) {
+export default function TextField(props: TextInputProps) {
     return (
         <TextInput style={styles.textField} placeholder={props.placeholder}/>
     );
@@ -15,7 +11,7 @@ const styles = StyleSheet.create({
         backgroundColor: "#ffffff",
         width: "100%",
         height: 40,
-        borderRadius: 5,
+        borderRadius: 50,
         padding: 10,
         marginBottom: 10,
     }

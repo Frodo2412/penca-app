@@ -11,6 +11,7 @@ import {RootStackParamList} from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
 import LoginScreen from "../screens/LoginScreen";
 import HomeScreen from "../screens/HomeScreen";
+import SignupScreen from "../screens/SignupScreen";
 
 export default function Navigation({colorScheme}: { colorScheme: ColorSchemeName }) {
     return (
@@ -32,6 +33,7 @@ function RootNavigator() {
     return (
         <Stack.Navigator>
             <Stack.Screen name="Login" component={LoginScreen} options={{headerShown: false}}/>
+            <Stack.Screen name={"Signup"} component={SignupScreen} options={{headerShown: false}}/>
             <Stack.Screen name="Home" component={HomeScreen} options={{headerShown: false}}/>
         </Stack.Navigator>
     );

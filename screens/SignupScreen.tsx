@@ -8,21 +8,22 @@ import {
     TouchableWithoutFeedback,
     View
 } from "react-native";
-import TextField from "../components/fields/TextField";
-import {RootStackScreenProps} from "../types";
 import PrimaryButton from "../components/buttons/PrimaryButton";
 import SecondaryButton from "../components/buttons/SecondaryButton";
+import TextField from "../components/fields/TextField";
+import {RootStackScreenProps} from "../types";
 import EmailField from "../components/fields/EmailField";
 
 
-export default function LoginScreen({navigation}: RootStackScreenProps<'Login'>) {
+export default function SignupScreen({navigation}: RootStackScreenProps<'Signup'>) {
 
     const login = () => {
-        navigation.navigate("Home");
+        navigation.navigate("Login");
     }
 
     const signup = () => {
-        navigation.navigate("Signup");
+        navigation.navigate("Home");
+        console.log("Signup");
     };
 
     return (
@@ -33,9 +34,10 @@ export default function LoginScreen({navigation}: RootStackScreenProps<'Login'>)
                         <Text style={styles.title}>PencaApp</Text>
                         <EmailField placeholder={"johndoe@mail.com"}/>
                         <TextField placeholder={"1234"}/>
+                        <TextField placeholder={"1234"} keyboardType={"visible-password"}/>
                         <View style={styles.buttonLayout}>
-                            <PrimaryButton title={"Sign Up"} onPress={login}/>
-                            <SecondaryButton title={"Login"} onPress={signup}/>
+                            <PrimaryButton title={"Sign Up"} onPress={signup}/>
+                            <SecondaryButton title={"Login"} onPress={login}/>
                         </View>
                     </View>
                 </SafeAreaView>
