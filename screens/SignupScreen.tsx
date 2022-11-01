@@ -1,18 +1,10 @@
-import {
-    Keyboard,
-    KeyboardAvoidingView,
-    Platform,
-    SafeAreaView,
-    StyleSheet,
-    Text,
-    TouchableWithoutFeedback,
-    View
-} from "react-native";
+import {StyleSheet, Text, View} from "react-native";
 import PrimaryButton from "../components/buttons/PrimaryButton";
 import SecondaryButton from "../components/buttons/SecondaryButton";
-import TextField from "../components/fields/TextField";
 import {RootStackScreenProps} from "../types";
 import EmailField from "../components/fields/EmailField";
+import PasswordField from "../components/fields/PasswordField";
+import HideableKeyboardView from "../components/containers/HideableKeyboardView";
 
 
 export default function SignupScreen({navigation}: RootStackScreenProps<'Signup'>) {
@@ -27,44 +19,25 @@ export default function SignupScreen({navigation}: RootStackScreenProps<'Signup'
     };
 
     return (
-        <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"}>
-            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-                <SafeAreaView style={styles.view}>
-                    <View style={styles.container}>
-                        <Text style={styles.title}>PencaApp</Text>
-                        <EmailField placeholder={"johndoe@mail.com"}/>
-                        <TextField placeholder={"1234"}/>
-                        <TextField placeholder={"1234"} keyboardType={"visible-password"}/>
-                        <View style={styles.buttonLayout}>
-                            <PrimaryButton title={"Sign Up"} onPress={signup}/>
-                            <SecondaryButton title={"Login"} onPress={login}/>
-                        </View>
-                    </View>
-                </SafeAreaView>
-            </TouchableWithoutFeedback>
-        </KeyboardAvoidingView>
+        <HideableKeyboardView>
+            <Text style={styles.title}>PencaApp</Text>
+            <EmailField title={"Enter Email"} placeholder={"johndoe@mail.com"}/>
+            <PasswordField title={"Enter Password"} placeholder={"1234"}/>
+            <PasswordField title={"Confirm Password"} placeholder={"1234"}/>
+            <View style={styles.buttonLayout}>
+                <PrimaryButton title={"Sign Up"} onPress={signup}/>
+                <SecondaryButton title={"Login"} onPress={login}/>
+            </View>
+        </HideableKeyboardView>
     );
 
 }
 
 const styles = StyleSheet.create({
-    view: {
-        height: "100%",
-        alignItems: "center",
-        justifyContent: "center",
-    },
     title: {
         fontSize: 20,
         fontWeight: "bold",
         marginBottom: 30,
-    },
-    container: {
-        padding: 20,
-        width: "80%",
-        alignItems: "center",
-        justifyContent: "center",
-        backgroundColor: "#eeeeee",
-        borderRadius: 10,
     },
     buttonLayout: {
         flexDirection: "row",
